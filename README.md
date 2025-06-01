@@ -1,2 +1,2 @@
 # Auto-Clicker
-javascript sutoclicker
+javascript autoclicker
