@@ -1,0 +1,35 @@
+// Simple JavaScript Autoclicker
+// This script will automatically click a target element at a specified interval.
+
+// USAGE:
+// 1. Open the browser console (F12 or Ctrl+Shift+I).
+// 2. Paste this code into the console and press Enter.
+// 3. Call startAutoClicker(selector, intervalMilliseconds) to start.
+//    For example: startAutoClicker("#myButton", 1000);
+// 4. Call stopAutoClicker() to stop the autoclicker.
+
+let autoclickerInterval = null;
+
+function startAutoClicker(selector, interval = 1000) {
+    stopAutoClicker(); // Prevent multiple intervals
+
+    autoclickerInterval = setInterval(() => {
+        const element = document.querySelector(selector);
+        if (element) {
+            element.click();
+            console.log(`Clicked ${selector} at ${new Date().toISOString()}`);
+        } else {
+            console.warn(`Element not found: ${selector}`);
+        }
+    }, interval);
+
+    console.log(`Autoclicker started for ${selector} every ${interval}ms`);
+}
+
+function stopAutoClicker() {
+    if (autoclickerInterval) {
+        clearInterval(autoclickerInterval);
+        autoclickerInterval = null;
+        console.log("Autoclicker stopped.");
+    }
+}
